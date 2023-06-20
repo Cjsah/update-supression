@@ -21,7 +21,10 @@ public class CommandRegistry {
         }))).then(literal("release").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
             suppressionBlocks.remove(BlockPosArgumentType.getBlockPos(context, "pos"));
             return Command.SINGLE_SUCCESS;
-        }))).then(literal("list").executes(context -> {
+        }))).then(literal("clear").executes(context -> {
+            suppressionBlocks.clear();
+            return Command.SINGLE_SUCCESS;
+        })).then(literal("list").executes(context -> {
             String feedback = suppressionBlocks.stream().map(pos -> String.format("[%s, %s, %s]", pos.getX(), pos.getY(), pos.getZ())).collect(Collectors.joining());
             context.getSource().sendFeedback(() -> Text.of(feedback), false);
             return Command.SINGLE_SUCCESS;
