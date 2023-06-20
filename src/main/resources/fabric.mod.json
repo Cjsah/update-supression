@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "update-suppression",
+  "version": "${version}",
+  "name": "UpdateSuppression",
+  "description": "",
+  "authors": [
+    "Cjsah"
+  ],
+  "license": "AGPL 3.0",
+  "environment": "*",
+  "mixins": [
+    "update.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "*",
+    "fabricloader": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
