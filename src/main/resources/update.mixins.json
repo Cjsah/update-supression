@@ -3,6 +3,7 @@
     "package": "net.cjsah.update.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "CommandRegisterMixin"
     ],
     "injectors": {
         "defaultRequire": 1
