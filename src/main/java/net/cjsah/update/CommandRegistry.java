@@ -19,7 +19,7 @@ public class CommandRegistry {
             suppressionBlocks.add(BlockPosArgumentType.getBlockPos(context, "pos"));
             return Command.SINGLE_SUCCESS;
         }))).then(literal("release").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
-            suppressionBlocks.add(BlockPosArgumentType.getBlockPos(context, "pos"));
+            suppressionBlocks.remove(BlockPosArgumentType.getBlockPos(context, "pos"));
             return Command.SINGLE_SUCCESS;
         }))).then(literal("list").executes(context -> {
             String feedback = suppressionBlocks.stream().map(pos -> String.format("[%s, %s, %s]", pos.getX(), pos.getY(), pos.getZ())).collect(Collectors.joining());
