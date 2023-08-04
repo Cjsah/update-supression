@@ -16,7 +16,6 @@ public class UpdateSuppression {
     }
 
     public static void suppression(World world, BlockPos pos) throws Exception {
-        System.out.println("run");
         Optional<SuppressionBlock> optional = suppressionBlocks.stream().filter(it -> it.equals(world, pos)).findFirst();
         if (optional.isPresent()) {
             suppressionBlocks.remove(optional.get());

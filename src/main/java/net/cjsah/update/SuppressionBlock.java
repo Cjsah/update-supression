@@ -14,9 +14,6 @@ public class SuppressionBlock {
     }
 
     public boolean equals(World world, BlockPos pos) {
-        System.out.println(world);
-        System.out.println(world.getDimensionKey().getValue());
-        System.out.println(pos);
         return world.getDimensionKey().getValue().equals(this.dimension) && this.pos.equals(pos);
     }
 
