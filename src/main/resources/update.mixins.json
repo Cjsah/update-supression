@@ -3,7 +3,7 @@
     "package": "net.cjsah.update.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-        "LecternBlockMixin"
+        "SuppressionBlockMixin"
     ],
     "injectors": {
         "defaultRequire": 1

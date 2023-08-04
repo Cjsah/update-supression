@@ -19,7 +19,8 @@
   ],
   "depends": {
     "minecraft": "*",
-    "fabricloader": "*"
+    "fabricloader": "*",
+    "fabric-api": "*"
   },
   "suggests": {
     "another-mod": "*"
