@@ -4,11 +4,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class SuppressionBlock {
+public class SuppressionData {
     private final Identifier dimension;
     private final BlockPos pos;
 
-    public SuppressionBlock(World world, BlockPos pos) {
+    public SuppressionData(World world, BlockPos pos) {
         this.dimension = world.getDimensionKey().getValue();
         this.pos = pos;
     }
@@ -36,7 +36,7 @@ public class SuppressionBlock {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof SuppressionBlock that)) return false;
+        if (!(o instanceof SuppressionData that)) return false;
 
         if (!dimension.equals(that.dimension)) return false;
         return pos.equals(that.pos);

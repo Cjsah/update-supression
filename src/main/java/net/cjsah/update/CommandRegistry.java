@@ -2,6 +2,7 @@ package net.cjsah.update;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.block.BlockState;
 import net.minecraft.command.argument.BlockPosArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
@@ -15,10 +16,10 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class CommandRegistry {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("update").then(literal("suppression").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
+        dispatcher.register(literal("update").then(literal("suppress").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
             World world = context.getSource().getWorld();
             BlockPos pos = BlockPosArgumentType.getBlockPos(context, "pos");
-            suppressionBlocks.add(new SuppressionBlock(world, pos));
+            suppressionBlocks.add(new SuppressionData(world, pos));
             return Command.SINGLE_SUCCESS;
         }))).then(literal("release").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
             World world = context.getSource().getWorld();
@@ -35,8 +36,16 @@ public class CommandRegistry {
                 return Command.SINGLE_SUCCESS;
             }
             source.sendFeedback(() -> Text.of("Blocks:"), false);
-            suppressionBlocks.stream().map(SuppressionBlock::toGameString).forEach(it ->
+            suppressionBlocks.stream().map(SuppressionData::toGameString).forEach(it ->
                     source.sendFeedback(() -> Text.of(it), false));
+            return Command.SINGLE_SUCCESS;
+        })));
+
+        dispatcher.register(literal("block").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
+            ServerCommandSource source = context.getSource();
+            BlockState blockState = source.getWorld().getBlockState(BlockPosArgumentType.getBlockPos(context, "pos"));
+            System.out.println(blockState);
+
             return Command.SINGLE_SUCCESS;
         })));
     }

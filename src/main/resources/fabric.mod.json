@@ -20,7 +20,7 @@
   "depends": {
     "minecraft": "*",
     "fabricloader": "*",
-    "fabric-api": "*"
+    "fabric-command-api-v2": "*"
   },
   "suggests": {
     "another-mod": "*"
