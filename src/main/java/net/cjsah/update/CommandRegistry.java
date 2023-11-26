@@ -2,7 +2,6 @@ package net.cjsah.update;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.block.BlockState;
 import net.minecraft.command.argument.BlockPosArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
@@ -38,14 +37,6 @@ public class CommandRegistry {
             source.sendFeedback(() -> Text.of("Blocks:"), false);
             suppressionBlocks.stream().map(SuppressionData::toGameString).forEach(it ->
                     source.sendFeedback(() -> Text.of(it), false));
-            return Command.SINGLE_SUCCESS;
-        })));
-
-        dispatcher.register(literal("block").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
-            ServerCommandSource source = context.getSource();
-            BlockState blockState = source.getWorld().getBlockState(BlockPosArgumentType.getBlockPos(context, "pos"));
-            System.out.println(blockState);
-
             return Command.SINGLE_SUCCESS;
         })));
     }
