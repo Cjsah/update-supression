@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-@Mixin(NetworkThreadUtils.class)
+@Mixin(value = NetworkThreadUtils.class, remap = false)
 public class SuppressPacketExceptionMixin {
 
     @Shadow
